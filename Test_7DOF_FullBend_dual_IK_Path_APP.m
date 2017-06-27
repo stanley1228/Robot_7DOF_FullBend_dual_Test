@@ -78,8 +78,8 @@ for t=1:1:DEF_DESCRETE_POINT
     in_beta_L=0*(t/DEF_DESCRETE_POINT)*(pi/180);
     in_gamma_L=0*(t/DEF_DESCRETE_POINT)*(pi/180);
 
-    Rednt_alpha_R=-90*(pi/180);
-    Rednt_alpha_L=90*(pi/180);
+    Rednt_alpha_R=-45*(pi/180);
+    Rednt_alpha_L=45*(pi/180);
   
     
   
@@ -89,10 +89,10 @@ for t=1:1:DEF_DESCRETE_POINT
     theta_R=IK_7DOF_FullBend(L0,L1,L2,L3,L4,L5,x_base_R,y_base_R,z_base_R,in_x_end_R,in_y_end_R,in_z_end_R,in_alpha_R,in_beta_R,in_gamma_R,Rednt_alpha_R);
     y_base_L=L0;
     theta_L=IK_7DOF_FullBend(L0,L1,L2,L3,L4,L5,x_base_L,y_base_L,z_base_L,in_x_end_L,in_y_end_L,in_z_end_L,in_alpha_L,in_beta_L,in_gamma_L,Rednt_alpha_L);
-    theta_L(3)=-theta_R(3); %左手和右手的第3軸需要反向
-   
-    R=theta_R*57.3
-    L=theta_L*57.3
+    
+    
+    R=theta_R*57.3;
+    L=theta_L*57.3;
     %forward kinematic
     %theta=[0 0 0 0 0 0 0];
     [out_x_end_R,out_y_end_R,out_z_end_R,out_alpha_R,out_beta_R,out_gamma_R,P_R,RotationM_R] = FK_7DOF_FullBend(L0,L1,L2,L3,L4,L5,x_base_R,y_base_R,z_base_R,theta_R);
@@ -114,8 +114,8 @@ for t=1:1:DEF_DESCRETE_POINT
     In_R=[in_x_end_R in_y_end_R in_z_end_R in_alpha_R in_beta_R in_gamma_R];
     Out_R=[out_x_end_R out_y_end_R out_z_end_R out_alpha_R out_beta_R out_gamma_R];
     
-    In_L=[in_x_end_L in_y_end_L in_z_end_L in_alpha_L in_beta_L in_gamma_L];
-    Out_L=[out_x_end_L out_y_end_L out_z_end_L out_alpha_L out_beta_L out_gamma_L];
+    In_L=[in_x_end_L in_y_end_L in_z_end_L in_alpha_L in_beta_L in_gamma_L]
+    Out_L=[out_x_end_L out_y_end_L out_z_end_L out_alpha_L out_beta_L out_gamma_L]
     
     %確認FK 和IK誤差
 %     if(out_x_end-in_x_end)>1e-5 || (out_y_end-in_y_end)>1e-5 || (out_z_end-in_z_end)>1e-5 || (out_alpha-in_alpha)>1e-5 || (out_beta-in_beta)>1e-5 || (out_gamma-in_gamma)>1e-5 
