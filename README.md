@@ -1,0 +1,2 @@
+# Robot_7DOF_FullBend_dual_Test
+FullBend雙手測試
